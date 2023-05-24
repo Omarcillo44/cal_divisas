@@ -1,15 +1,43 @@
 public class calculadora {
 
-    double peso = 17.80, dolar = 1, euro = 0.92, resultado = 4;
+    double peso = 17.80, dolar = 1, euro = 0.92;
+    double resultado, tipo_cambio;
+    double ekisde(double valor, int divisa1, int divisa2){
 
-    public calculadora(double val1, double val2, int divisa1, int divisa2) {
+        if (divisa2 == 1){
 
-        switch (divisa1) {
-            case 1 -> resultado = val2 *= peso;
-            case 2 -> resultado = val2 *= dolar;
-            case 3 -> resultado = val2 *= euro;
+            valor *= peso;
+
+        } else if (divisa2 == 2){
+
+            valor *= dolar;
+
+        } else if (divisa2 == 3){
+
+            valor *= euro;
+
         }
 
+        if (divisa1 == 1 ){
+
+
+            resultado = valor / peso;
+
+        } else if (divisa1 == 2 ){
+
+
+            resultado = valor / dolar;
+
+        } else if (divisa1 == 3){
+
+
+            resultado = valor / euro;
+
+        }
+
+
+        return resultado;
     }
+
 
 }

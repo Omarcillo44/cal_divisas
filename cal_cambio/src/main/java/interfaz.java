@@ -1,5 +1,7 @@
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.*;
 
@@ -9,7 +11,8 @@ public abstract class interfaz extends JFrame implements ActionListener {
     public JTextField field_1, field_2, resultado;
     public JButton restar, cambio, multiplicar, dividir, cerrar;
 
-    public JComboBox combo_div1, combo_div2;
+    public JComboBox<String> combo_div1;
+    public JComboBox<String> combo_div2;
 
     private JLabel titulo, num1Txt, num2Txt, result;
 
@@ -57,11 +60,6 @@ public abstract class interfaz extends JFrame implements ActionListener {
         field_1.setBounds(150, 120, 100, 20);
         add(field_1);
 
-        //Text field de operando 2
-        field_2 = new JTextField();
-        field_2.setBounds(150, 160, 100, 20);
-        add(field_2);
-
         //Text field de resultado
         resultado = new JTextField();
         resultado.setBounds(150, 200, 100, 20);
@@ -69,64 +67,40 @@ public abstract class interfaz extends JFrame implements ActionListener {
 
         // Buttons
 
-        //Botón Restar
-        restar = new JButton("Restar");
-        restar.setBounds(450, 100, 100, 50);
-        add(restar);
-        restar.addActionListener(this); //listener
-
         //Botón sumar
         cambio = new JButton("Sumar");
         cambio.setBounds(450, 160, 100, 50);
         add(cambio);
         cambio.addActionListener(this); //listener
 
-        //Botón multiplicar
-        multiplicar = new JButton("Multiplicar");
-        multiplicar.setBounds(450, 220, 100, 50);
-        add(multiplicar);
-        multiplicar.addActionListener(this); //listener
-
-        //Botón dividir
-        dividir = new JButton("Dividir");
-        dividir.setBounds(450, 280, 100, 50);
-        add(dividir);
-        dividir.addActionListener(this); //listener
-
-        //Botón cerrar
-        cerrar = new JButton("Cerrar");
-        cerrar.setBounds(450, 340, 100, 50);
-        add(cerrar);
-        cerrar.addActionListener(this);
 
         /*Combo para divisas*/
 
         //Divisa 1
-        int x_divisa1 = 120; //coordenada x
-        int y_divisa1 = 150; //coordenada y
-        nuevoCombo(combo_div1, x_divisa1, y_divisa1); //se crea el combo
+        combo_div1 = new JComboBox<String>(); //crea el combo
 
-        //Divisa 2
-        int x_divisa2 = 120;
-        int y_divisa2 = 250;
-        nuevoCombo(combo_div2, x_divisa2, y_divisa2);
-
-    }
-
-    public void nuevoCombo (JComboBox combo, int x, int y){
-
-        combo = new JComboBox<String>(); //crea el combo
-
-        combo.setBounds(x,y,140,35); //modificador de tamaño
-
-        combo.setFont(new Font("Corbel", Font.CENTER_BASELINE, 30)); //modificador de fuente
+        combo_div1.setBounds(120,150,140,35); //modificador de tamaño
+        combo_div1.setFont(new Font("Corbel", Font.BOLD, 30)); //modificador de fuente
 
         //Añadimos las 3 divisas
-        combo.addItem("MXN");
-        combo.addItem("USD");
-        combo.addItem("EUR");
+        combo_div1.addItem("MXN");
+        combo_div1.addItem("USD");
+        combo_div1.addItem("EUR");
 
-        add(combo); //se muestra el combo
+        add(combo_div1); //se muestra el combo
+
+        //Divisa 2
+        combo_div2 = new JComboBox<String>(); //crea el combo
+
+        combo_div2.setBounds(120,250,140,35); //modificador de tamaño
+        combo_div2.setFont(new Font("Corbel", Font.BOLD, 30)); //modificador de fuente
+
+        //Añadimos las 3 divisas
+        combo_div2.addItem("MXN");
+        combo_div2.addItem("USD");
+        combo_div2.addItem("EUR");
+
+        add(combo_div2); //se muestra el combo
 
     }
 
